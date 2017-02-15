@@ -5,7 +5,7 @@ var istanbul = require('gulp-istanbul');
 var eslint = require('gulp-eslint');
 
 gulp.task('coverage', function() {
-  return gulp.src(['index.js', 'lib/*.js'])
+  return gulp.src(['index.js'])
     .pipe(istanbul({includeUntested: true}))
     .pipe(istanbul.hookRequire());
 });
@@ -17,7 +17,7 @@ gulp.task('test', gulp.series('coverage', function test() {
 }));
 
 gulp.task('lint', function() {
-  return gulp.src(['*.js', 'lib/*.js'])
+  return gulp.src(['*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format());
 });
