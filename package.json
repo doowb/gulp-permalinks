@@ -27,6 +27,7 @@
   "devDependencies": {
     "delete": "^0.3.2",
     "fs-exists-sync": "^0.1.0",
+    "gulp-format-md": "^0.1.11",
     "mocha": "^3.2.0",
     "vinyl-fs": "^2.4.4"
   },
@@ -34,5 +35,22 @@
     "extend-shallow": "^2.0.1",
     "permalinks": "^1.0.0",
     "through2": "^2.0.3"
+  },
+  "verb": {
+    "reflinks": [
+      "gulp",
+      "permalinks"
+    ],
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }
