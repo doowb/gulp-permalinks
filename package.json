@@ -10,8 +10,7 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "LICENSE"
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
@@ -20,10 +19,11 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "gulp",
-    "permalinks"
-  ],
+  "dependencies": {
+    "extend-shallow": "^2.0.1",
+    "permalinks": "^1.0.1",
+    "through2": "^2.0.3"
+  },
   "devDependencies": {
     "delete": "^0.3.2",
     "fs-exists-sync": "^0.1.0",
@@ -31,11 +31,12 @@
     "mocha": "^3.2.0",
     "vinyl-fs": "^2.4.4"
   },
-  "dependencies": {
-    "extend-shallow": "^2.0.1",
-    "permalinks": "^1.0.0",
-    "through2": "^2.0.3"
-  },
+  "keywords": [
+    "gulp",
+    "gulp-permalinks",
+    "gulpplugin",
+    "permalinks"
+  ],
   "verb": {
     "reflinks": [
       "gulp",
