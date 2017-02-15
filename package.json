@@ -25,7 +25,8 @@
     "permalinks"
   ],
   "devDependencies": {
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "vinyl-fs": "^2.4.4"
   },
   "dependencies": {
     "extend-shallow": "^2.0.1",

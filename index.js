@@ -4,7 +4,6 @@ var path = require('path');
 var through = require('through2');
 var extend = require('extend-shallow');
 var Permalinks = require('permalinks');
-var permalinks;
 
 /**
  * Create a stream that creates a permalink for each file passing through based on the provided `structure`
@@ -39,7 +38,7 @@ module.exports = function(structure, options, fn) {
   }
 
   var opts = extend({}, options);
-  permalinks = permalinks || opts.permalinks || new Permalinks(options);
+  var permalinks = opts.permalinks || new Permalinks(options);
 
   return opts.flush ? flush() : passthrough();
 
