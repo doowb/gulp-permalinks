@@ -13,7 +13,7 @@ var Permalinks = require('permalinks');
  * ```js
  * gulp.task('permalinks', function() {
  *   return gulp.src('path/to/posts/*.md')
- *     .pipe(permalinks('blog/:stem/index.html))
+ *     .pipe(permalinks('blog/:stem/index.html'))
  *     .pipe(gulp.dest('_gh_pages'));
  * });
  * ```
