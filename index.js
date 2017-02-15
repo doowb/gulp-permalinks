@@ -74,7 +74,6 @@ module.exports = function(structure, options, fn) {
       }
       files.push(file);
       next();
-      next(null, file);
     }, function(cb) {
       for (var i = 0; i < files.length; i++) {
         this.push(files[i]);
@@ -104,7 +103,8 @@ module.exports = function(structure, options, fn) {
 
     // unless the user specifies `update = false` on `options` or `file.data`, update the `file.path`
     // with the new permalink
-    if (file.data.update !== false && opts.update !== false) {
+    var update = typeof file.data.update === 'boolean' ? file.data.update : opts.update;
+    if (update !== false) {
       file.path = path.resolve(file.base, file.data.relative);
     }
   }
