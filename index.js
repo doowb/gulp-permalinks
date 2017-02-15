@@ -29,6 +29,10 @@ var permalinks;
  */
 
 module.exports = function(structure, options, fn) {
+  if (!structure || typeof structure !== 'string') {
+    throw new TypeError('expected "structure" to be a string');
+  }
+
   if (typeof options === 'function') {
     fn = options;
     options = {};

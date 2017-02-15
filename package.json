@@ -23,5 +23,13 @@
   "keywords": [
     "gulp",
     "permalinks"
-  ]
+  ],
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "extend-shallow": "^2.0.1",
+    "permalinks": "^1.0.0",
+    "through2": "^2.0.3"
+  }
 }
