@@ -268,4 +268,32 @@ describe('gulp-permalinks', function() {
         cb();
       });
   });
+
+  it('should handle errors thrown in `fn`', function(cb) {
+    vfs.src('*.md', {cwd: fixtures('posts')})
+      .pipe(plugin('blog/:stem/index.html', function(file) {
+        if (file.stem === 'b') {
+          throw new Error('test error');
+        }
+      }))
+      .on('data', function() {})
+      .on('error', function(err) {
+        assert(/test error/.test(err.message));
+        cb();
+      });
+  });
+
+  it('should handle errors thrown in `fn` when `options.flush` is `true`', function(cb) {
+    vfs.src('*.md', {cwd: fixtures('posts')})
+      .pipe(plugin('blog/:stem/index.html', {flush: true}, function(file) {
+        if (file.stem === 'b') {
+          throw new Error('test error');
+        }
+      }))
+      .on('data', function() {})
+      .on('error', function(err) {
+        assert(/test error/.test(err.message));
+        cb();
+      });
+  });
 });
