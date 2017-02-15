@@ -238,4 +238,34 @@ describe('gulp-permalinks', function() {
         cb();
       });
   });
+
+  it('should use custom permalinks instance', function(cb) {
+    var permalinks = new Permalinks();
+
+    // create a preset that will use variables set in the `file` helper
+    permalinks.preset('archive', ':YYYY/:MM/:DD');
+
+    // create a `file` helper that will be called for each file going through permalinks
+    permalinks.helper('file', function(file) {
+      var m = /((\d{4})-(\d{2})-(\d{2})-)/.exec(file.stem);
+      if (!m) return;
+      file.data.YYYY = m[2];
+      file.data.MM = m[3];
+      file.data.DD = m[4];
+
+      // update the stem on the context
+      this.context.stem = file.stem.replace(m[0], '');
+    });
+
+    vfs.src('*.md', {cwd: fixtures('content')})
+      .pipe(plugin('archives/:archive/:stem.html', {permalinks: permalinks}))
+      .once('error', cb)
+      .pipe(vfs.dest(actual()))
+      .once('end', function() {
+        assert(exists(actual('archives/2017/01/02/a.html')));
+        assert(exists(actual('archives/2017/02/01/b.html')));
+        assert(exists(actual('archives/2017/02/14/c.html')));
+        cb();
+      });
+  });
 });
