@@ -30,7 +30,7 @@ gulp.task('permalinks', function() {
   }
 
   return gulp.src('path/to/posts/*.md')
-    .pipe(permalinks('blog/:date/:foo.html'))
+    .pipe(permalinks('blog/:date/:foo.html', options))
     .pipe(gulp.dest('_gh_pages'));
 });
 
@@ -50,7 +50,7 @@ gulp.task('permalinks', function() {
   };
 
   return gulp.src('path/to/posts/*.md')
-    .pipe(permalinks('blog'))
+    .pipe(permalinks('blog', options))
     .pipe(gulp.dest('_gh_pages'));
 });
 
@@ -71,7 +71,7 @@ gulp.task('permalinks', function() {
   };
 
   return gulp.src('path/to/posts/*.md')
-    .pipe(permalinks('blog/:foo/:baz/:stem/index.html'))
+    .pipe(permalinks('blog/:foo/:baz/:stem/index.html', options))
     .pipe(gulp.dest('_gh_pages'));
 });
 
